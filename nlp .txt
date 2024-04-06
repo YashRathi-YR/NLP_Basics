@@ -1,0 +1,63 @@
+-List of sentence is called document 
+
+-Text Preprocessing
+    Tokenization:
+        -it is the process of converting data(paragraphs) into tokens that maybe word or sentences
+        -we use nltk library
+        from nltk.tokeniser import  sent_tokenize,word_tokenize
+
+    Stemming:
+        -Stemming tries to reduces words to their base form, but it may not always accurately shrink words to their smallest size due to its simplifying nature.
+        -eating to eat running to run so on
+        -from nltk.stem import SnowballStemmer,RegexpStemmer,PorterStemmer
+
+
+    Lemmetising:
+        -It is process of converting word to root words rather then root stem, without changing the meaning of word, kind of similar to stemming  but more accurate
+        -from nltk.stem import WordNetLemmatizer
+
+    Stopwords:
+        -these are words like 'is','the' whose pressence or absence doesnot change the meaning of our corpus/ data
+        -from nltk.corpus import stopwords
+        import nltk
+        nltk.download('stopwords')
+
+    Part of Speech Tagging:
+        -(POS) tagging is a popular Natural Language Processing process which refers to categorizing words in a text (corpus) in correspondence with a particular part of speech like noun,verb,etc.
+        -import nltk
+        nltk.download('averaged_perceptron_tagger')
+        nltk.pos_tag(words)
+    Named Entity Recognition
+        -IT is the techniqu which is used to chunk or  identify and classify the entities(like name, place ,time,etc) and group them together
+        -nltk.download('maxent_ne_chunker')
+        nltk.ne_chunk(tag_elements).draw()
+
+Word to Vectors:
+    Word Embedding:
+        -It is technique used for representation of words for text analysis in the form of vectors that encodes meaning of words that are closer have similar meaning.
+        -It is divided into two types:
+            ->Count or Frecuency
+            ->Deep Learning Trained models
+        Count or frequency type includes OHE, Bag of Words and TFIDF
+        Deep learning trained model includes Word2Vec
+        word to vec is also divided into :
+            ->Continious Bag of Word
+            ->Skipgram 
+        One-Hot Encoding:
+            - The corpus is converted into a sparse matrix, where each word is represented by a vector with a single 1 and all other elements as 0. For example: [1, 0, 0, 0, 0], [0, 1, 0, 0, 0], etc.
+            - It is commonly used in libraries like scikit-learn's `OneHotEncoder` and pandas' `pd.get_dummies()`.
+            - However, one-hot encoding is not an ideal approach for text representation because it leads to inaccurate results due to overfitting and fails to capture the semantic relationships between words.
+            - Each word is treated as a separate feature, ignoring the context and meaning behind the text, which can result in poor performance for natural language processing tasks.
+        Bag Of Word:
+            -The Bag of Words model is an advancement over one-hot encoding for text representation. Instead of encoding each word as a separate vector (like one-hot encoding), it represents an entire sentence or document as a single vector. Each dimension of this vector corresponds to a word from the vocabulary, and the value indicates the frequency of that word in the given text.
+            -This approach overcomes the limitation of one-hot encoding, where all input vectors have the same length, regardless of the actual text length. With Bag of Words, the vector length is determined by the vocabulary size, allowing for variable-length text inputs. However, it discards word order and context information, treating each text as an unordered collection (or "bag") of words.
+ 
+        Term Frecuency and Inversze Document Frecuency(TF-IDF):
+            - TF-IDF is a statistical measure composed of two parts: Term Frequency (TF) and Inverse Document Frequency (IDF).
+            - Term Frequency (TF) = (Number of times a word appears in a sentence) / (Total number of words in the sentence).
+            - Inverse Document Frequency (IDF) = log(Total number of sentences / Number of sentences containing the word).
+            - TF-IDF = TF * IDF.
+            - It assigns lower importance (weights) to words that appear frequently across many documents, as they are less informative for distinguishing between documents.
+            - While TF-IDF addresses some limitations of previous models, it still faces issues of sparsity and out-of-vocabulary words, but to a lesser extent.
+            - TF-IDF overcomes the shortcomings of models like Bag of Words by considering the importance of words within a document and across the entire corpus, providing a more meaningful representation of text.
+     
